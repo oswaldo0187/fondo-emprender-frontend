@@ -1,11 +1,12 @@
 import NextAuth, { type NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+import { ROLES, type Role } from "@/lib/auth/roles";
 
 interface User {
   id: string;
   email: string;
   name: string;
-  role: "ADMIN" | "EDITOR" | "VIEWER";
+  role: Role;
 }
 
 export const authOptions: NextAuthOptions = {
@@ -29,7 +30,7 @@ export const authOptions: NextAuthOptions = {
             id: "1",
             email: "admin@test.com",
             name: "Admin",
-            role: "ADMIN",
+            role: ROLES.ADMIN,
           };
         }
 
@@ -49,7 +50,7 @@ export const authOptions: NextAuthOptions = {
     async session({ session, token }) {
       if (session.user) {
         session.user.id = token.sub ?? "";
-        session.user.role = token.role ?? "VIEWER";
+        session.user.role = token.role ?? ROLES.VIEWER;
       }
 
       return session;
