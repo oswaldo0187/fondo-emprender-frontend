@@ -6,7 +6,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:e2e": "playwright test",
+    "test:e2e:home": "playwright test tests/e2e/home-navigation.spec.ts",
+    "validate:home-links": "playwright test tests/e2e/home-navigation.spec.ts --reporter=line"
   },
   "dependencies": {
     "next": "16.1.6",
@@ -16,6 +19,7 @@
     "swr": "^2.4.1"
   },
   "devDependencies": {
+    "@playwright/test": "^1.56.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
