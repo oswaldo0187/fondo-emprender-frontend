@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import QuickLinksSection from '@/sections/QuickLinksSection';
 import {
   fetchBanner,
   fetchConvocatorias,
@@ -97,6 +98,8 @@ export default async function Page() {
       <ConvocatoriasSection convocatorias={convocatorias} />
       <NewsSection news={news} />
       <StatisticsSection statistics={statistics} />
+
+      <QuickLinksSection />
 
       <nav style={{ marginTop: '2rem' }}>
         <ul>
